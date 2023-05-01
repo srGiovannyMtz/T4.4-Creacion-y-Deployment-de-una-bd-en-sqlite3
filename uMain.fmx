@@ -1,0 +1,217 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'SQLite demo'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object btnOpenDB: TButton
+      Align = Right
+      Position.X = 486.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 149.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Conectar '
+      OnClick = btnOpenDBClick
+    end
+  end
+  object pnlData: TPanel
+    Align = Client
+    Padding.Left = 10.000000000000000000
+    Padding.Top = 10.000000000000000000
+    Padding.Right = 10.000000000000000000
+    Padding.Bottom = 10.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 347.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object edtNoControl: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 1
+      Position.X = 10.000000000000000000
+      Position.Y = 59.000000000000000000
+      Margins.Bottom = 7.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edtNombre: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 2
+      Position.X = 10.000000000000000000
+      Position.Y = 20.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Bottom = 7.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object rdbM: TRadioButton
+      Align = Top
+      GroupName = 'Genre'
+      Margins.Bottom = 7.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Masculino'
+      OnClick = rdbMClick
+    end
+    object rdbF: TRadioButton
+      Align = Top
+      GroupName = 'Genre'
+      Margins.Bottom = 7.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 135.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Femenino'
+      OnChange = rdbFChange
+    end
+    object spnEdad: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 5
+      Cursor = crIBeam
+      Position.X = 10.000000000000000000
+      Position.Y = 172.000000000000000000
+      Margins.Bottom = 7.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object dtmFecha: TDateEdit
+      Date = 45045.000000000000000000
+      Align = Top
+      Margins.Bottom = 7.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 211.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+    end
+  end
+  object BindNavigator1: TBindNavigator
+    Align = Bottom
+    Position.Y = 395.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 425.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 55.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object lblStatus: TLabel
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 55.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'lblStatus'
+      TabOrder = 1
+    end
+  end
+  object db: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite'
+      
+        'Database=C:\Users\Giova\Documents\Embarcadero\Studio\Projects\sq' +
+        'ldemo\escolar.db'
+      'LockingMode=Normal')
+    LoginPrompt = False
+    Left = 544
+    Top = 329
+  end
+  object tblAlumno: TFDTable
+    Connection = db
+    TableName = 'Alumno'
+    Left = 480
+    Top = 345
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = tblAlumno
+    ScopeMappings = <>
+    Left = 328
+    Top = 304
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 180
+    Top = 157
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'noControl'
+      Control = edtNoControl
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'nombre'
+      Control = edtNombre
+      Track = False
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'edad'
+      Control = spnEdad
+      Track = True
+    end
+    object LinkPropertyToFieldIsChecked: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'sexo'
+      Component = rdbM
+      CustomFormat = 'IfThen(ToStr(%s)="M",True, False)'
+      ComponentProperty = 'IsChecked'
+    end
+    object LinkPropertyToFieldIsChecked2: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'sexo'
+      Component = rdbF
+      CustomFormat = 'IfThen(ToStr(%s)="F",True, False)'
+      ComponentProperty = 'IsChecked'
+    end
+    object LinkPropertyToFieldDate: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'fechaIngreso'
+      Component = dtmFecha
+      ComponentProperty = 'Date'
+    end
+  end
+end
