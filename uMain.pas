@@ -44,7 +44,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnOpenDBClick(Sender: TObject);
     procedure rdbMClick(Sender: TObject);
-    procedure rdbFChange(Sender: TObject);
+    procedure rdbFClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -122,11 +122,9 @@ bndDECorCON:= False;
 end;
 
 
-
-
-procedure TfrmMain.rdbFChange(Sender: TObject);
+procedure TfrmMain.rdbFClick(Sender: TObject);
 begin
-  if (rdbF.IsChecked) then // checking
+  if not(rdbF.IsChecked) then // checking
   begin
 
     tblAlumno.Edit;
@@ -137,7 +135,7 @@ end;
 procedure TfrmMain.rdbMClick(Sender: TObject);
 begin
 
-  if (rdbM.IsChecked) then // checking
+  if not (rdbM.IsChecked) then // checking
   begin
     tblAlumno.Edit;
     tblAlumno.FieldByName('sexo').AsString := 'M';

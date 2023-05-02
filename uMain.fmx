@@ -87,7 +87,7 @@ object frmMain: TfrmMain
       Size.PlatformDefault = False
       TabOrder = 4
       Text = 'Femenino'
-      OnChange = rdbFChange
+      OnClick = rdbFClick
     end
     object spnEdad: TSpinBox
       Touch.InteractiveGestures = [LongTap, DoubleTap]
